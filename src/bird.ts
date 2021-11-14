@@ -1,6 +1,7 @@
 import { time } from "./types";
 
-const BIRD_SPEED: number = 0.25;
+const BIRD_SPEED_UP: number = 0.25;
+const BIRD_SPEED_DOWN: number = 0.5;
 const JUMP_DURATION: number = 150;
 
 const bird: HTMLElement = document.querySelector("[data-bird]");
@@ -17,9 +18,9 @@ export function updateBird(delta: time) {
   const top: number = getTop();
 
   if (timeSinceLastJump < JUMP_DURATION) {
-    setTop(top - BIRD_SPEED * delta);
+    setTop(top - BIRD_SPEED_UP * delta);
   } else {
-    setTop(top + BIRD_SPEED * delta);
+    setTop(top + BIRD_SPEED_DOWN * delta);
   }
 
   timeSinceLastJump += delta;
