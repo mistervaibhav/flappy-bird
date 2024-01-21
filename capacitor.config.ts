@@ -1,7 +1,7 @@
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "com.vaibhavsinghh.flappybird",
+  appId: "in.vaibhavsinghh.flappybird",
   appName: "flappy-bird",
   webDir: "dist",
   bundledWebRuntime: false,

@@ -6,37 +6,40 @@ export default class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.setBaseURL("https://labs.phaser.io");
+    // this.load.setBaseURL("https://labs.phaser.io");
 
-    this.load.image("sky", "assets/skies/space3.png");
-    this.load.image("logo", "assets/sprites/phaser3-logo.png");
-    this.load.image("red", "assets/particles/red.png");
+    this.load.image("sky", "assets/sky.png");
+    this.load.image("bird", "assets/bird.png");
+    this.load.image("star", "assets/star.png");
+    this.load.image("birdSprite", "assets/birdSprite.png");
   }
 
   create() {
-    let image = this.add.image(
+    const image = this.add.image(
       this.cameras.main.width / 2,
       this.cameras.main.height / 2,
       "sky"
     );
-    let scaleX = this.cameras.main.width / image.width;
-    let scaleY = this.cameras.main.height / image.height;
-    let scale = Math.max(scaleX, scaleY);
+    const scaleX = this.cameras.main.width / image.width;
+    const scaleY = this.cameras.main.height / image.height;
+    const scale = Math.max(scaleX, scaleY);
+
     image.setScale(scale).setScrollFactor(0);
 
-    // const particles = this.add.particles("red");
-    const emitter = this.add.particles(undefined, undefined, "red", {
-      speed: 100,
-      scale: { start: 1, end: 0 },
-      blendMode: "ADD",
-    });
+    this.add.image(100, this.cameras.main.height / 2, "bird").setScale(scale);
 
-    const logo = this.physics.add.image(400, 100, "logo");
+    // const emitter = this.add.particles(undefined, undefined, "star", {
+    //   speed: 100,
+    //   scale: { start: 1, end: 0 },
+    //   blendMode: "ADD",
+    // });
 
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
+    // const logo = this.physics.add.image(400, 100, "bird");
 
-    emitter.startFollow(logo);
+    // logo.setVelocity(100, 200);
+    // logo.setBounce(1, 1);
+    // logo.setCollideWorldBounds(true);
+
+    // emitter.startFollow(logo);
   }
 }
